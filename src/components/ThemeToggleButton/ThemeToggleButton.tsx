@@ -24,6 +24,12 @@ const Button = styled.button`
 	position: relative;
     padding: 2px;
     opacity: .8;
+    border-radius: 5px; 
+
+    &:focus {
+        outline-offset: 4px;
+        outline: 2px solid white;
+    }
 
 	&:hover {
 		opacity: 1;

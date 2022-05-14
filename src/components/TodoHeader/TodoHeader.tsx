@@ -27,6 +27,10 @@ const Heading = styled.h1`
 	letter-spacing: 8px;
     font-size: 2rem;
     transform: translateY(4px);
+
+    @media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
+        font-size: 2.5rem;
+    }
 `;
 
 export default TodoHeader;
