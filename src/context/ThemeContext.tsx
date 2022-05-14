@@ -1,11 +1,6 @@
 import React, { createContext } from "react";
 import { Theme } from "../models/Theme";
 
-interface initialState {
-	theme: Theme;
-	toggleTheme: () => void;
-}
-
 const ThemeContext = createContext({
 	theme: Theme.dark,
 	toggleTheme: () => {},
