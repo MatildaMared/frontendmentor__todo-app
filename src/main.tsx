@@ -4,12 +4,15 @@ import App from "./App";
 import { StylesReset } from "./styling/reset";
 import { GlobalStyles } from "./styling/globalStyles";
 import { Variables } from "./styling/variables";
+import { ThemeProvider } from "./context/ThemeContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<StylesReset />
-		<GlobalStyles />
-		<Variables />
-		<App />
-	</React.StrictMode>
+	<ThemeProvider>
+		<React.StrictMode>
+			<Variables />
+			<StylesReset />
+			<GlobalStyles />
+			<App />
+		</React.StrictMode>
+	</ThemeProvider>
 );

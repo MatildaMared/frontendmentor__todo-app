@@ -21,7 +21,7 @@ export const StylesReset = createGlobalStyle`
     /*
     3. Allow percentage-based heights in the application
     */
-    html, body {
+    html, body, #root {
     height: 100%;
     }
     /*
