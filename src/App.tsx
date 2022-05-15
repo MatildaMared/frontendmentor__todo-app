@@ -9,6 +9,7 @@ import { StylesReset } from "./styling/reset";
 import { GlobalStyles } from "./styling/globalStyles";
 import TodoHeader from "./components/TodoHeader";
 import NewTodo from "./components/NewTodo";
+import Todos from "./components/Todos";
 
 function App() {
 	const { theme } = useContext(ThemeContext);
@@ -21,6 +22,7 @@ function App() {
 				<TodoContainer>
 					<TodoHeader />
 					<NewTodo />
+					<Todos />
 				</TodoContainer>
 			</Container>
 			<Variables />

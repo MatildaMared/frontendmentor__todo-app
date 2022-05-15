@@ -30,16 +30,16 @@ const Form = styled.form`
 	width: 100%;
 	position: relative;
 	box-shadow: ${(props) => props.theme.boxShadow};
+	margin-bottom: 24px;
 `;
 
 const Input = styled.input`
 	width: 100%;
-	height: 48px;
 	border-radius: 5px;
 	border: none;
 	background: ${(props) => props.theme.todoBackground};
-	font-size: var(--font-size-base);
-	padding: 0.5rem 1rem 0.5rem calc(1rem + 48px);
+	font-size: 1rem;
+	padding: 1rem 1rem 1rem calc(1rem + 48px);
 	color: ${(props) => props.theme.text};
 	outline-offset: 4px;
 
@@ -57,8 +57,8 @@ const Circle = styled.div`
 	top: 50%;
 	left: 24px;
 	transform: translateY(-50%);
-	width: 20px;
-	height: 20px;
+	width: 1.5rem;
+	height: 1.5rem;
 	border-radius: 50%;
 	border: 1px solid ${(props) => props.theme.checkCircle};
 `;

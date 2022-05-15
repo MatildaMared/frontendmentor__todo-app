@@ -14,7 +14,8 @@ export const lightTheme = {
 	text: "var(--color-gray-dark-2)",
 	boxShadow: "0 35px 50px rgba(194, 195, 214, 0.5)",
 	outline: "2px solid var(--color-gray-light-2)",
-	checkCircle: "var(--color-gray-light-3)",
+	checkCircle: "var(--color-gray-light-2)",
+	todoDivider: "var(--color-gray-light-3)",
 };
 
 export const darkTheme = {
@@ -26,4 +27,5 @@ export const darkTheme = {
 	boxShadow: "0px 35px 50px rgba(0, 0, 0, 0.5)",
 	outline: "2px solid var(--color-gray-light-4)",
 	checkCircle: "var(--color-gray-dark-1)",
+	todoDivider: "var(--color-gray-dark-1)",
 };

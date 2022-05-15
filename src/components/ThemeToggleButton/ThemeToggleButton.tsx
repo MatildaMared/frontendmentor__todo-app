@@ -46,16 +46,6 @@ const Button = styled.button`
 			border-radius: 50%;
 			animation: animate 1s ease-in-out infinite;
 		}
-
-		@keyframes animate {
-			0% {
-				transform: scale(1.2);
-			}
-
-			100% {
-				transform: scale(1);
-			}
-		}
 	}
 `;
 
