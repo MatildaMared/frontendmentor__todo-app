@@ -8,20 +8,22 @@ const base = {
 
 export const lightTheme = {
 	...base,
-	background: "#FAFAFA",
+	background: "var(--color-gray-light-1)",
 	todoBackground: "#FFF",
-	grayMedium: "#9495A5",
-	text: "#393A4B",
+	placeholder: "var(--color-gray-1)",
+	text: "var(--color-gray-dark-2)",
 	boxShadow: "0 35px 50px rgba(194, 195, 214, 0.5)",
-	outline: "2px solid #E6E6F2"
+	outline: "2px solid var(--color-gray-light-2)",
+	checkCircle: "var(--color-gray-light-3)",
 };
 
 export const darkTheme = {
 	...base,
-	background: "#171823",
-	todoBackground: "#25273D",
-	grayMedium: "#767992",
-	text: "#C8CBE7",
+	background: "var(--color-black)",
+	todoBackground: "var(--color-gray-dark-4)",
+	placeholder: "var(--color-gray-2)",
+	text: "var(--color-gray-light-4)",
 	boxShadow: "0px 35px 50px rgba(0, 0, 0, 0.5)",
-	outline: "2px solid #C8CBE7",
+	outline: "2px solid var(--color-gray-light-4)",
+	checkCircle: "var(--color-gray-dark-1)",
 };

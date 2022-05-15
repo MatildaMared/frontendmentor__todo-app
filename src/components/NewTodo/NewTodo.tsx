@@ -44,7 +44,7 @@ const Input = styled.input`
 	outline-offset: 4px;
 
 	&::placeholder {
-		color: ${(props) => props.theme.grayMedium};
+		color: ${(props) => props.theme.placeholder};
 	}
 
 	&:focus {
@@ -60,7 +60,7 @@ const Circle = styled.div`
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	border: 1px solid ${(props) => props.theme.grayMedium};
+	border: 1px solid ${(props) => props.theme.checkCircle};
 `;
 
 export default NewTodo;
