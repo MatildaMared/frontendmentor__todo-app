@@ -38,7 +38,6 @@ const Input = styled.input`
 	border-radius: 5px;
 	border: none;
 	background: ${(props) => props.theme.todoBackground};
-	font-size: 1rem;
 	padding: 1rem 1rem 1rem calc(1rem + 48px);
 	color: ${(props) => props.theme.text};
 	outline-offset: 4px;

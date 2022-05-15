@@ -2,13 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 export const Variables = createGlobalStyle`
     :root {
-        --font-size-sm: clamp(0.6rem, 0.37vw + 0.51rem, 0.84rem);
-        --font-size-base: clamp(0.75rem, 0.56vw + 0.62rem, 1.13rem);
-        --font-size-md: clamp(0.94rem, 0.84vw + 0.74rem, 1.5rem);
-        --font-size-lg: clamp(1.17rem, 1.24vw + 0.88rem, 2rem);
-        --font-size-xl: clamp(1.46rem, 1.8vw + 1.04rem, 2.66rem);
-        --font-size-xxl: clamp(1.83rem, 2.59vw + 1.23rem, 3.55rem);
-        --font-size-xxxl: clamp(2.29rem, 3.67vw + 1.43rem, 4.73rem);
+        --font-size-s: clamp(0.7rem, 0.37vw + 0.51rem, 0.84rem);
+        --font-size-base: clamp(0.85rem, 0.56vw + 0.62rem, 1.07rem);
 
         --color-gray-light-1: hsl(0, 0%, 98%);
         --color-gray-light-2: hsl(236, 33%, 92%);

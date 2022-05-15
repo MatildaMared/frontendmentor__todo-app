@@ -2,6 +2,7 @@ const base = {
 	breakpoints: {
 		mobile: "23.43rem",
 		desktop: "90rem",
+		footer: "500px",
 	},
 	maxContentWidth: "540px",
 };
