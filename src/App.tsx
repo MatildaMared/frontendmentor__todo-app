@@ -8,6 +8,7 @@ import { Variables } from "./styling/variables";
 import { StylesReset } from "./styling/reset";
 import { GlobalStyles } from "./styling/globalStyles";
 import TodoHeader from "./components/TodoHeader";
+import NewTodo from "./components/NewTodo";
 
 function App() {
 	const { theme } = useContext(ThemeContext);
@@ -19,6 +20,7 @@ function App() {
 				<Header />
 				<TodoContainer>
 					<TodoHeader />
+					<NewTodo />
 				</TodoContainer>
 			</Container>
 			<Variables />
@@ -39,8 +41,12 @@ const TodoContainer = styled.main`
 	width: 100%;
 	margin-inline: auto;
 	max-width: ${(props) => props.theme.maxContentWidth};
-	margin-top: -8.25rem;
+	margin-top: -9.5rem;
 	padding: 0 24px;
+
+	@media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
+		margin-top: -14rem;
+	}
 `;
 
 export default App;

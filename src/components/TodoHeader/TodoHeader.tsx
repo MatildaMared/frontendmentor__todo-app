@@ -5,8 +5,8 @@ import ThemeToggleButton from "../ThemeToggleButton";
 const TodoHeader = () => {
 	return (
 		<Container>
-            <Heading>Todo</Heading>
-            <ThemeToggleButton />
+			<Heading>Todo</Heading>
+			<ThemeToggleButton />
 		</Container>
 	);
 };
@@ -16,6 +16,11 @@ const Container = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 25px;
+
+	@media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
+		margin-bottom: 40px;
+	}
 `;
 
 const Heading = styled.h1`
@@ -25,12 +30,12 @@ const Heading = styled.h1`
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 8px;
-    font-size: 2rem;
-    transform: translateY(4px);
+	font-size: 1.8rem;
+	transform: translateY(4px);
 
-    @media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
-        font-size: 2.5rem;
-    }
+	@media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
+		font-size: 2.5rem;
+	}
 `;
 
 export default TodoHeader;

@@ -18,7 +18,7 @@ interface HeaderProps {
 }
 
 const Container = styled.header<HeaderProps>`
-	height: 12.5rem;
+	height: 200px;
 	width: 100%;
 	max-width: ${(props) => props.theme.breakpoints.desktop};
 	background-image: url(${(props) => props.currentTheme === Theme.light ? bgMobileLight : bgMobileDark});
@@ -26,7 +26,7 @@ const Container = styled.header<HeaderProps>`
 	background-position: center;
 
 	@media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
-		height: 18.75rem;
+		height: 300px;
 		background-image: url(${(props) => props.currentTheme === Theme.light ? bgDesktopLight : bgDesktopDark});
 	}
 `;
