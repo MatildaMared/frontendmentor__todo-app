@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { selectActiveTodosCount, selectFilter } from "../../features/todos/todosSlice";
 import { Todo } from "../../models/Todo";
 import { TodoFilterState } from "../../models/TodoFilterState";
+import store from "../../app/store";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { updateFilter } from "../../features/todos/todosSlice";
 
-interface Props {
-	todos: Todo[];
-}
+const TodosFooter = () => {
+	const dispatch = useAppDispatch();
+	const activeFilter = useAppSelector(selectFilter);
+	const todosLeft = useAppSelector(selectActiveTodosCount);
 
-const TodosFooter = ({ todos }: Props) => {
-	const [activeState, setActiveState] = useState(TodoFilterState.All);
-
-	const handleFilterStateChange = (state: TodoFilterState) => {
-		setActiveState(state);
-		// TODO - dispatch action to update filter state
+	const handleFilterStateChange = (filter: TodoFilterState) => {
+		dispatch(updateFilter(filter));
 	};
 
 	const handleClearCompleted = () => {
@@ -21,12 +22,12 @@ const TodosFooter = ({ todos }: Props) => {
 
 	return (
 		<Wrapper>
-			<ItemsLeft>{todos.length} items left</ItemsLeft>
+			<ItemsLeft>{todosLeft} items left</ItemsLeft>
 			<Filters>
 				<StateButton
 					onClick={() => handleFilterStateChange(TodoFilterState.All)}
 					className={
-						activeState === TodoFilterState.All ? "active" : ""
+						activeFilter === TodoFilterState.All ? "active" : ""
 					}
 				>
 					All
@@ -36,7 +37,7 @@ const TodosFooter = ({ todos }: Props) => {
 						handleFilterStateChange(TodoFilterState.Active)
 					}
 					className={
-						activeState === TodoFilterState.Active ? "active" : ""
+						activeFilter === TodoFilterState.Active ? "active" : ""
 					}
 				>
 					Active
@@ -46,7 +47,7 @@ const TodosFooter = ({ todos }: Props) => {
 						handleFilterStateChange(TodoFilterState.Completed)
 					}
 					className={
-						activeState === TodoFilterState.Completed
+						activeFilter === TodoFilterState.Completed
 							? "active"
 							: ""
 					}
@@ -160,7 +161,8 @@ const Button = styled.button`
 		color: var(--color-blue);
 	}
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: ${(props) => props.theme.text};
 	}
 `;

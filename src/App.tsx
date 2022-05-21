@@ -10,36 +10,11 @@ import { GlobalStyles } from "./styling/globalStyles";
 import TodoHeader from "./components/TodoHeader";
 import NewTodo from "./components/NewTodo";
 import Todos from "./components/Todos";
-import { Todo } from "./models/Todo";
 import TodosFooter from "./components/TodosFooter";
 
 function App() {
 	const { theme } = useContext(ThemeContext);
 	const selectedTheme = theme === Theme.light ? lightTheme : darkTheme;
-
-	const todos: Todo[] = [
-		{
-			id: 1,
-			title: "Mata katten",
-			completed: false,
-		},
-		{
-			id: 2,
-			title: "Springa en runda",
-			completed: true,
-		},
-		{
-			id: 3,
-			title: "Städa toaletten",
-			completed: false,
-		},
-		{
-			id: 4,
-			title: "Skriva matlista",
-			completed: true,
-		},
-	];
-
 	return (
 		<ThemeProvider theme={selectedTheme}>
 			<Container>
@@ -47,8 +22,8 @@ function App() {
 				<TodoContainer>
 					<TodoHeader />
 					<NewTodo />
-					<Todos todos={todos} />
-					<TodosFooter todos={todos} />
+					<Todos />
+					<TodosFooter />
 				</TodoContainer>
 			</Container>
 			<Variables />

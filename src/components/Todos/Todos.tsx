@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Todo as ITodo } from "../../models/Todo";
 import Todo from "../Todo/Todo";
-import TodosFooter from "../TodosFooter";
+import { selectFilteredTodos } from "../../features/todos/todosSlice";
+import { useAppSelector } from "../../app/hooks";
 
-interface Props {
-    todos: ITodo[];
-}
+const Todos = () => {
+	const todos = useAppSelector(selectFilteredTodos);
 
-const Todos = ({todos}: Props) => {
 	return (
 		<Wrapper>
 			<TodosContainer>
@@ -40,7 +38,7 @@ const TodosContainer = styled.ul`
 const NoTodos = styled.li`
 	text-align: center;
 	padding: 1rem 20px 1rem;
-    color: ${(props) => props.theme.placeholder};
+	color: ${(props) => props.theme.placeholder};
 `;
 
 export default Todos;
