@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Todo as ITodo } from "../../models/Todo";
 import CheckMarkIcon from "../../assets/images/icon-check.svg";
 import CrossIcon from "../../assets/images/icon-cross.svg";
+import { useAppDispatch } from "../../app/hooks";
+import { toggleTodo, removeTodo } from "../../features/todos/todosSlice";
 
 interface Props {
 	todo: ITodo;
@@ -10,13 +12,14 @@ interface Props {
 
 const Todo = ({ todo }: Props) => {
 	const { completed, title } = todo;
+	const dispatch = useAppDispatch();
 
 	const toggleCompleted = () => {
-		console.log("toggleCompleted");
+		dispatch(toggleTodo(todo.id));
 	};
 
 	const handleRemove = () => {
-		console.log("handleRemove");
+		dispatch(removeTodo(todo.id));
 	};
 
 	return (
@@ -27,7 +30,7 @@ const Todo = ({ todo }: Props) => {
 			>
 				{completed && <CheckMarkIcon />}
 			</CheckButton>
-			<Title>{title}</Title>
+			<Title className={completed ? "completed" : ""}>{title}</Title>
 			<RemoveButton onClick={handleRemove}>
 				<CrossIcon />
 			</RemoveButton>
@@ -44,7 +47,7 @@ const Container = styled.li`
 	border-bottom: 1px solid ${(props) => props.theme.todoDivider};
 `;
 
-const CheckButton = styled.button`
+const ButtonBase = styled.button`
 	border: none;
 	background: transparent;
 	cursor: pointer;
@@ -59,13 +62,30 @@ const CheckButton = styled.button`
 	justify-content: center;
 	transition: all 0.2s;
 
+	&:hover {
+		border: none;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: -5px;
+			top: -5px;
+			right: -5px;
+			bottom: -5px;
+			border: 1px solid ${(props) => props.theme.checkCircle};
+			border-radius: 50%;
+			animation: animate 1s ease-in-out infinite;
+		}
+	}
+
 	&:focus {
 		outline: ${(props) => props.theme.outline};
 		outline-offset: 4px;
 	}
+`;
 
+const CheckButton = styled(ButtonBase)`
 	&:hover {
-		border: none;
 		background: var(--gradient);
 
 		&::after {
@@ -77,17 +97,6 @@ const CheckButton = styled.button`
 			height: calc(100% - 2px);
 			border-radius: 50%;
 			background-color: ${(props) => props.theme.todoBackground};
-		}
-		&::before {
-			content: "";
-			position: absolute;
-			left: -5px;
-			top: -5px;
-			right: -5px;
-			bottom: -5px;
-			border: 1px solid ${(props) => props.theme.checkCircle};
-			border-radius: 50%;
-			animation: animate 1s ease-in-out infinite;
 		}
 	}
 
@@ -104,9 +113,14 @@ const CheckButton = styled.button`
 
 const Title = styled.span`
 	flex: 1;
+
+	&.completed {
+		color: ${(props) => props.theme.dimmedText};
+		text-decoration: line-through;
+	}
 `;
 
-const RemoveButton = styled(CheckButton)`
+const RemoveButton = styled(ButtonBase)`
 	border: none;
 
 	&:hover {
