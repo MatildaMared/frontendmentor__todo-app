@@ -20,6 +20,7 @@ const NewTodo = () => {
 			completed: false,
 		};
 		dispatch(addTodo(todoToAdd));
+		setNewTodo("");
 	};
 
 	return (
