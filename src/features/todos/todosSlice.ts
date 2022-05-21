@@ -8,29 +8,20 @@ interface TodosState {
 	filter: TodoFilterState;
 }
 
+const getTodos = (): Todo[] => {
+    const todos = localStorage.getItem("todos");
+
+    if (todos && todos.length > 0) {
+        return JSON.parse(todos);
+    }
+
+    return [];
+}
+
+const todos = getTodos();
+
 const initialState: TodosState = {
-	todos: [
-		{
-			id: "1",
-			title: "Mata katten",
-			completed: false,
-		},
-		{
-			id: "2",
-			title: "Springa en runda",
-			completed: true,
-		},
-		{
-			id: "3",
-			title: "Städa toaletten",
-			completed: false,
-		},
-		{
-			id: "4",
-			title: "Skriva matlista",
-			completed: true,
-		},
-	],
+	todos,
 	filter: TodoFilterState.All,
 };
 
@@ -38,8 +29,8 @@ export const todosSlice = createSlice({
 	name: "todos",
 	initialState,
 	reducers: {
-        addTodo: (state, action: PayloadAction<Todo>) => {
-            state.todos = [action.payload, ...state.todos];
+		addTodo: (state, action: PayloadAction<Todo>) => {
+			state.todos = [action.payload, ...state.todos];
 		},
 		removeTodo: (state, action: PayloadAction<string>) => {
 			state.todos = state.todos.filter(
