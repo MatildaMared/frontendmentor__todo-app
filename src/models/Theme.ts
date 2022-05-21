@@ -1,8 +1,8 @@
 import { darkTheme, lightTheme } from "../styling/themes";
 
 export enum Theme {
-	light = "light",
-	dark = "dark",
+	Light = "light",
+	Dark = "dark",
 }
 
 export type ThemeType = typeof lightTheme | typeof darkTheme;

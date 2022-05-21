@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styling/themes";
 import { Theme } from "./models/Theme";
 import Header from "./components/Header";
-import { ThemeContext } from "./context/ThemeContext";
 import { Variables } from "./styling/variables";
 import { StylesReset } from "./styling/reset";
 import { GlobalStyles } from "./styling/globalStyles";
@@ -11,10 +9,13 @@ import TodoHeader from "./components/TodoHeader";
 import NewTodo from "./components/NewTodo";
 import Todos from "./components/Todos";
 import TodosFooter from "./components/TodosFooter";
+import { useAppSelector } from "./app/hooks";
+import { selectTheme } from "./features/theme/themeSlice";
 
 function App() {
-	const { theme } = useContext(ThemeContext);
-	const selectedTheme = theme === Theme.light ? lightTheme : darkTheme;
+	const theme = useAppSelector(selectTheme);
+	const selectedTheme = theme === Theme.Light ? lightTheme : darkTheme;
+
 	return (
 		<ThemeProvider theme={selectedTheme}>
 			<Container>

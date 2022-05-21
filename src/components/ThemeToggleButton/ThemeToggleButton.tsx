@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import IconSun from "../../assets/images/icon-sun.svg";
 import IconMoon from "../../assets/images/icon-moon.svg";
-import { ThemeContext } from "../../context/ThemeContext";
 import { Theme } from "../../models/Theme";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { selectTheme, toggleTheme } from "../../features/theme/themeSlice";
 
 const ThemeToggleButton = () => {
-	const { theme, toggleTheme } = useContext(ThemeContext);
+	const dispatch = useAppDispatch();
+	const theme = useAppSelector(selectTheme);
 
 	return (
-		<Button onClick={toggleTheme}>
-			{theme === Theme.dark ? <IconSun /> : <IconMoon />}
+		<Button onClick={() => dispatch(toggleTheme())}>
+			{theme === Theme.Dark ? <IconSun /> : <IconMoon />}
 		</Button>
 	);
 };
