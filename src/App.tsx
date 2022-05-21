@@ -25,6 +25,7 @@ function App() {
 					<Todos />
 					<TodosFooter />
 				</TodoContainer>
+				<DragAndDrop>Drag and drop to reorder list</DragAndDrop>
 			</Container>
 			<Variables />
 			<StylesReset />
@@ -50,6 +51,13 @@ const TodoContainer = styled.main`
 	@media (min-width: ${(props) => props.theme.breakpoints.mobile}) {
 		margin-top: -14rem;
 	}
+`;
+
+const DragAndDrop = styled.p`
+	margin-top: 2.5rem;
+	text-align: center;
+	color: ${(props) => props.theme.dimmedText};
+	font-size: 0.875rem;
 `;
 
 export default App;
