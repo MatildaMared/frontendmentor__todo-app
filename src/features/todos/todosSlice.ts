@@ -9,14 +9,14 @@ interface TodosState {
 }
 
 const getTodos = (): Todo[] => {
-    const todos = localStorage.getItem("todos");
+	const todos = localStorage.getItem("todos");
 
-    if (todos && todos.length > 0) {
-        return JSON.parse(todos);
-    }
+	if (todos && todos.length > 0) {
+		return JSON.parse(todos);
+	}
 
-    return [];
-}
+	return [];
+};
 
 const todos = getTodos();
 
@@ -46,6 +46,9 @@ export const todosSlice = createSlice({
 				todo.completed = !todo.completed;
 			}
 		},
+		reorderTodos: (state, action: PayloadAction<Todo[]>) => {
+			state.todos = action.payload;
+		},
 		updateFilter: (state, action: PayloadAction<TodoFilterState>) => {
 			state.filter = action.payload;
 		},
@@ -57,6 +60,7 @@ export const {
 	removeTodo,
 	clearAllCompletedTodos,
 	toggleTodo,
+	reorderTodos,
 	updateFilter,
 } = todosSlice.actions;
 

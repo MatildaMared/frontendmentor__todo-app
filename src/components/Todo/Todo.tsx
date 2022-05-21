@@ -5,12 +5,14 @@ import CheckMarkIcon from "../../assets/images/icon-check.svg";
 import CrossIcon from "../../assets/images/icon-cross.svg";
 import { useAppDispatch } from "../../app/hooks";
 import { toggleTodo, removeTodo } from "../../features/todos/todosSlice";
+import { Draggable } from "react-beautiful-dnd";
 
 interface Props {
 	todo: ITodo;
+	isDragging: boolean;
 }
 
-const Todo = ({ todo }: Props) => {
+const Todo = ({ todo, isDragging }: Props) => {
 	const { completed, title } = todo;
 	const dispatch = useAppDispatch();
 
@@ -23,7 +25,7 @@ const Todo = ({ todo }: Props) => {
 	};
 
 	return (
-		<Container>
+		<Container className={isDragging ? "isDragging" : ""}>
 			<CheckButton
 				onClick={toggleCompleted}
 				className={completed ? "completed" : ""}
@@ -45,6 +47,13 @@ const Container = styled.li`
 	justify-content: space-between;
 	gap: 1rem;
 	border-bottom: 1px solid ${(props) => props.theme.todoDivider};
+	background-color: ${(props) => props.theme.todoBackground};
+
+	&.isDragging {
+		border-radius: 5px;
+		border-bottom: none;
+		opacity: 0.7;
+	}
 `;
 
 const ButtonBase = styled.button`
