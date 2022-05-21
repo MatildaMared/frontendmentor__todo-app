@@ -65,8 +65,20 @@ const CheckButton = styled.button`
 	}
 
 	&:hover {
-		&::before,
+		border: none;
+		background: var(--gradient);
+
 		&::after {
+			content: "";
+			position: absolute;
+			top: 1px;
+			left: 1px;
+			width: calc(100% - 2px);
+			height: calc(100% - 2px);
+			border-radius: 50%;
+			background-color: ${(props) => props.theme.todoBackground};
+		}
+		&::before {
 			content: "";
 			position: absolute;
 			left: -5px;
@@ -83,6 +95,10 @@ const CheckButton = styled.button`
 		background: var(--gradient);
 		border: 1px solid transparent;
 		background-origin: border-box;
+
+		&::after {
+			display: none;
+		}
 	}
 `;
 
