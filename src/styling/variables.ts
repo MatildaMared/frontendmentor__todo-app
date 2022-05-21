@@ -2,15 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 export const Variables = createGlobalStyle`
     :root {
-        --font-size-s: clamp(0.7rem, 0.37vw + 0.51rem, 0.84rem);
-        --font-size-base: clamp(0.85rem, 0.56vw + 0.62rem, 1.07rem);
-
         --color-gray-light-1: hsl(0, 0%, 98%);
         --color-gray-light-2: hsl(236, 33%, 92%);
         --color-gray-light-3: hsl(233, 11%, 84%);
         --color-gray-light-4: hsl(234, 39%, 85%);
         --color-gray-1: hsl(236, 9%, 61%);
-        --color-gray-2:hsl(234, 11%, 52%);
+        --color-gray-2:hsl(235, 11%, 52%);
         --color-gray-dark-1: hsl(233, 14%, 35%);
         --color-gray-dark-2: hsl(237, 14%, 26%);
         --color-gray-dark-3: hsl(235, 19%, 35%);

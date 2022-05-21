@@ -1,22 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Todo } from "../../models/Todo";
+import { TodoFilterState } from "../../models/TodoFilterState";
 
 interface Props {
 	todos: Todo[];
 }
 
 const TodosFooter = ({ todos }: Props) => {
+	const [activeState, setActiveState] = useState(TodoFilterState.All);
+
+	const handleFilterStateChange = (state: TodoFilterState) => {
+		setActiveState(state);
+		// TODO - dispatch action to update filter state
+	};
+
+	const handleClearCompleted = () => {
+		// TODO - dispatch action to clear completed todos
+	};
+
 	return (
 		<Wrapper>
 			<ItemsLeft>{todos.length} items left</ItemsLeft>
 			<Filters>
-				<button>All</button>
-				<button>Active</button>
-				<button>Completed</button>
+				<StateButton
+					onClick={() => handleFilterStateChange(TodoFilterState.All)}
+					className={
+						activeState === TodoFilterState.All ? "active" : ""
+					}
+				>
+					All
+				</StateButton>
+				<StateButton
+					onClick={() =>
+						handleFilterStateChange(TodoFilterState.Active)
+					}
+					className={
+						activeState === TodoFilterState.Active ? "active" : ""
+					}
+				>
+					Active
+				</StateButton>
+				<StateButton
+					onClick={() =>
+						handleFilterStateChange(TodoFilterState.Completed)
+					}
+					className={
+						activeState === TodoFilterState.Completed
+							? "active"
+							: ""
+					}
+				>
+					Completed
+				</StateButton>
 			</Filters>
 			<ClearCompletedWrapper>
-				<ClearCompleted>Clear completed</ClearCompleted>
+				<Button onClick={handleClearCompleted}>Clear completed</Button>
 			</ClearCompletedWrapper>
 		</Wrapper>
 	);
@@ -29,7 +68,7 @@ const Wrapper = styled.section`
 	grid-template-columns: repeat(2, 1fr);
 	align-items: center;
 	position: relative;
-	font-size: var(--font-size-s);
+	font-size: 0.875rem;
 
 	@media (min-width: ${(props) => props.theme.breakpoints.footer}) {
 		background-color: ${(props) => props.theme.todoBackground};
@@ -50,6 +89,7 @@ const ItemsLeft = styled.p`
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	color: ${(props) => props.theme.dimmedText};
 
 	@media (min-width: ${(props) => props.theme.breakpoints.footer}) {
 		grid-row: auto;
@@ -104,6 +144,29 @@ const ClearCompletedWrapper = styled.div`
 	}
 `;
 
-const ClearCompleted = styled.button``;
+const Button = styled.button`
+	color: ${(props) => props.theme.dimmedText};
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	border-radius: 5px;
+
+	&:focus {
+		outline: ${(props) => props.theme.outline};
+	}
+
+	&.active {
+		color: var(--color-blue);
+	}
+
+	&:hover, &:focus {
+		color: ${(props) => props.theme.text};
+	}
+`;
+
+const StateButton = styled(Button)`
+	font-weight: bold;
+`;
 
 export default TodosFooter;

@@ -7,7 +7,11 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
         font-family: "Josefin Sans", sans-serif;
         background-color: ${(props) => props.theme.background};
         color: ${(props) => props.theme.text};
-        font-size: var(--font-size-base);
+        font-size: 0.875rem;
+
+        @media (min-width: ${(props) => props.theme.breakpoints.desktop}) {
+            font-size: 1.125rem;
+        }
     }
 
     @keyframes animate {

@@ -4,7 +4,7 @@ const base = {
 		desktop: "90rem",
 		footer: "500px",
 	},
-	maxContentWidth: "540px",
+	maxContentWidth: "650px",
 };
 
 export const lightTheme = {
@@ -17,6 +17,7 @@ export const lightTheme = {
 	outline: "2px solid var(--color-gray-light-2)",
 	checkCircle: "var(--color-gray-light-2)",
 	todoDivider: "var(--color-gray-light-3)",
+	dimmedText: "var(--color-gray-1)",
 };
 
 export const darkTheme = {
@@ -29,4 +30,5 @@ export const darkTheme = {
 	outline: "2px solid var(--color-gray-light-4)",
 	checkCircle: "var(--color-gray-dark-1)",
 	todoDivider: "var(--color-gray-dark-1)",
+	dimmedText: "hsl(235, 16%, 42%)",
 };
