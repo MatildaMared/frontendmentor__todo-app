@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { selectActiveTodosCount, selectFilter } from "../../features/todos/todosSlice";
-import { Todo } from "../../models/Todo";
+import {
+	clearAllCompletedTodos,
+	selectActiveTodosCount,
+	selectFilter,
+} from "../../features/todos/todosSlice";
 import { TodoFilterState } from "../../models/TodoFilterState";
-import store from "../../app/store";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { updateFilter } from "../../features/todos/todosSlice";
 
@@ -17,7 +19,7 @@ const TodosFooter = () => {
 	};
 
 	const handleClearCompleted = () => {
-		// TODO - dispatch action to clear completed todos
+		dispatch(clearAllCompletedTodos());
 	};
 
 	return (
