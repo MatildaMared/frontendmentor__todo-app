@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
+import { useAppDispatch } from "../../app/hooks";
+import { addTodo } from "../../features/todos/todosSlice";
 
 const NewTodo = () => {
 	const [newTodo, setNewTodo] = useState("");
+	const dispatch = useAppDispatch();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewTodo(e.target.value);
@@ -10,7 +14,12 @@ const NewTodo = () => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log(newTodo);
+		const todoToAdd = {
+			id: nanoid(),
+			title: newTodo,
+			completed: false,
+		};
+		dispatch(addTodo(todoToAdd));
 	};
 
 	return (

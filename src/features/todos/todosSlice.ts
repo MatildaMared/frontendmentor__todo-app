@@ -38,8 +38,8 @@ export const todosSlice = createSlice({
 	name: "todos",
 	initialState,
 	reducers: {
-		addTodo: (state, action: PayloadAction<Todo>) => {
-			state.todos.push(action.payload);
+        addTodo: (state, action: PayloadAction<Todo>) => {
+            state.todos = [action.payload, ...state.todos];
 		},
 		removeTodo: (state, action: PayloadAction<string>) => {
 			state.todos = state.todos.filter(
